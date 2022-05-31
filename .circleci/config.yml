@@ -12,7 +12,8 @@ jobs:
         - run:
             name: install dependency
             command: |
-               apk add --update ansible
+              # apk add --update ansible
+              sudo apt install ansible
         - run:
             name: configure dependency
             command: |
