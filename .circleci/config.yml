@@ -1,0 +1,17 @@
+jobs:
+    configure_infrastructur
+     docker: 
+       - image: python3.7-alpin3.11
+      steps: 
+       - checkout
+       - add_ssh_key
+           fingerprints: [""]
+       -run
+            name: install dependency
+            command: |
+               apk add --update ansible
+       -run
+            name: configure dependency
+            command: |
+               ansible-playbook -i inventory.txt playbook.yml      
+               
