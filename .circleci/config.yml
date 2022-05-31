@@ -1,16 +1,19 @@
+version: 2.1
+# Use a package of configuration called an orb.
 jobs:
-    configure_infrastructur
-     docker: 
-       - image: python:3.7-alpine3.11
-      steps: 
-       - checkout
-       - add_ssh_key
-           fingerprints: ["ec:41:ab:8f:e4:fe:83:84:a5:bb:67:ca:a5:57:c7:cc"]
-       - run
+  configure_infrastructure: # Choose any name, such as `build`
+      # The primary container, where your job's commands will run
+      docker:
+        - image: python:3.7-alpine3.11 
+      steps:
+        - checkout
+        - add_ssh_key
+            fingerprints: ["ec:41:ab:8f:e4:fe:83:84:a5:bb:67:ca:a5:57:c7:cc"]
+        - run
             name: install dependency
             command: |
                apk add --update ansible
-       - run
+        - run
             name: configure dependency
             command: |
                ansible-playbook -i inventory.txt playbook.yml      
