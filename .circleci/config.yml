@@ -6,12 +6,11 @@ jobs:
        - checkout
        - add_ssh_key
            fingerprints: [""]
-       -run
+       - run
             name: install dependency
             command: |
                apk add --update ansible
-       -run
+       - run
             name: configure dependency
             command: |
                ansible-playbook -i inventory.txt playbook.yml      
-               
