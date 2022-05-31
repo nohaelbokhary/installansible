@@ -7,7 +7,7 @@ jobs:
         - image: python:3.7-alpine3.11 
       steps:
         - checkout
-        - add_ssh_key:
+        - add_ssh_keys:
             fingerprints: ["ec:41:ab:8f:e4:fe:83:84:a5:bb:67:ca:a5:57:c7:cc"]
         - run:
             name: install dependency
@@ -16,4 +16,9 @@ jobs:
         - run:
             name: configure dependency
             command: |
-               ansible-playbook -i inventory.txt playbook.yml      
+               ansible-playbook -i inventory.txt playbook.yml   
+workflows:
+  # Name the workflow
+  myWorkflow:
+    jobs:
+      - configure_infrastructure                  
