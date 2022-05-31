@@ -18,7 +18,6 @@ jobs:
             command: |
                ansible-playbook -i inventory.txt playbook.yml   
 workflows:
-  # Name the workflow
-  myWorkflow:
+  configure_infrastructure_Workflow:
     jobs:
       - configure_infrastructure               
